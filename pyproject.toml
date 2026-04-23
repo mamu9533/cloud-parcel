@@ -1,0 +1,22 @@
+[build-system]
+requires-python = ">=3.8"
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloud-parcel"
+version = "0.1.0"
+description = "Computes microphysics and optical properties of a cloud using pyrcel as a backend"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">= 3.8"
+dependencies = [
+    "pyrcel",
+    "joblib"
+    # Note: assimulo must be installed separately via conda/mamba for pyrcel to successfully install
+]
+authors = [
+    {name = "Maxim Muter", email = "mamu9533@colorado.edu"},
+]
+
+[project.optional-dependencies]
+dev = ["build", "twine"]
