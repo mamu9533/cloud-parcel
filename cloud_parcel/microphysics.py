@@ -1,7 +1,7 @@
 import numpy as np
 import pyrcel as pm
 
-from utils import compute_effective_radius, compute_volume, compute_tau
+from cloud_parcel.utils import compute_effective_radius, compute_volume, compute_tau
 
 
 class Microphysics_Analysis:
