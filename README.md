@@ -6,7 +6,7 @@ For a detailed example of how to use the package, see "example.ipynb"
 
 REQUIREMENTS FOR INSTALL
 
-Assimulo must be installed first via conda or mamba for correct installation of pyrcel, then pip install -e . should work.
+Assimulo must be installed first via conda or mamba for correct installation of pyrcel. For example (conda install -c conda-forge assimulo) then pip install -e . should work. You may need to install conda if you haven't already.
 
 Python version must be >= 3.8. 
 
