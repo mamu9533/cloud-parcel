@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
-from utils import calculate_absorbance, calculate_reflectance, calculate_transmittance
+from cloud_parcel.utils import calculate_absorbance, calculate_reflectance, calculate_transmittance
 
 class monte_carlo:
     """
