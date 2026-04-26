@@ -85,6 +85,10 @@ class Cloud_Parcel:
         self.aerosol_traces = aerosol_traces
         self.max_cloud_thickness = max_cloud_thickness
 
+    def __repr__(self):
+        species = [a.species for a in self.aerosols]
+        return f"Cloud_Parcel(H={self.H}, V={self.V}, species={species})"
+
     def run_pyrcel(self, accom=0.3):
         """
         Run the pyrcel adiabatic parcel model.
