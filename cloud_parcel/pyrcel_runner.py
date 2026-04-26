@@ -140,7 +140,7 @@ class Cloud_Parcel:
         self.cloud_top_z : float
             Cloud top height, m (only set if max_cloud_thickness is not None).
         """
-        from microphysics import Microphysics_Analysis
+        from cloud_parcel.microphysics import Microphysics_Analysis
 
         microphys = Microphysics_Analysis(self.aerosols, self.parcel_trace, self.aerosol_traces, max_cloud_thickness=self.max_cloud_thickness)
         self.r_effs = microphys.height_resolved_r_effs()
@@ -180,7 +180,7 @@ class Cloud_Parcel:
         self.reflectance : float
         self.absorbance : float or None
         """
-        from monte_carlo import monte_carlo
+        from cloud_parcel.monte_carlo import monte_carlo
 
         if self.total_tau is None:
             self.add_cloud_microphysics()
