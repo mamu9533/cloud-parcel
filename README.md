@@ -11,6 +11,7 @@ Assimulo must be installed first via conda or mamba for correct installation of 
 If anyone from class is using this, you should be able to install assimulo into the atoc-2025-lite environment:
 
 conda activate atoc-2025-lite
+
 conda install -c conda-forge assimulo
 
 Then you can just use this environment in a jupyter notebook when using cloud_parcel.
