@@ -103,18 +103,18 @@ def compute_volume(radii, Nis):
     return np.sum(volume * Nis, axis=1)
  
  
-def compute_tau(lwc, r_eff, z):
+def compute_tau(lwv, r_eff, z):
     """
     Compute height-resolved layer optical depth using the geometric optics
     approximation for liquid water clouds.
  
-    Applies the relation tau = 1.5 * (LWC / r_eff) * dZ, where the factor
+    Applies the relation tau = 1.5 * (LWV / r_eff) * dZ, where the factor
     of 1.5 follows from Mie theory in the geometric optics limit and assumes
     a cloud droplet extinction efficiency of 2.
  
     Parameters
     ----------
-    lwc : np.ndarray
+    lwv : np.ndarray
         1D array of liquid water volume concentration at each height, m^3/m^3.
     r_eff : np.ndarray
         1D array of effective radii at each height, m.
@@ -130,4 +130,4 @@ def compute_tau(lwc, r_eff, z):
     dZ = np.diff(z)
     dZ = np.insert(dZ, 0, 0)
  
-    return 1.5 * (lwc / r_eff) * dZ
+    return 1.5 * (lwv / r_eff) * dZ
