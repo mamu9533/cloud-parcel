@@ -28,7 +28,7 @@ class Microphysics_Analysis:
     ----------
     activation_matrices : dict
         Per-species binary activation matrices (n_heights x n_bins).
-        Set after calling process_that_shiiii().
+        Set after calling compute_activation_matrices().
     cloud_base_idx : int
         Index of cloud base in parcel_trace. Set by _apply_cloud_thickness_truncation().
     cloud_base_z : float
@@ -57,7 +57,7 @@ class Microphysics_Analysis:
         self.taus = None
         self.masked_arrays = None
 
-    def process_that_shiiii(self):
+    def compute_activation_matrices(self):
         """
         Construct per-species activation matrices from parcel output.
 
@@ -159,7 +159,7 @@ class Microphysics_Analysis:
         """
         Build concatenated masked radii and number concentration arrays.
 
-        Calls process_that_shiiii() if activation matrices have not yet been
+        Calls compute_activation_matrices() if activation matrices have not yet been
         computed. Results are cached in self.masked_arrays so subsequent calls
         are free.
 
@@ -175,7 +175,7 @@ class Microphysics_Analysis:
             Masked number concentration array (n_heights x total_bins), m^-3.
         """
         if self.activation_matrices is None:
-            self.process_that_shiiii()
+            self.compute_activation_matrices()
         
         if self.masked_arrays is not None:
             return self.masked_arrays
