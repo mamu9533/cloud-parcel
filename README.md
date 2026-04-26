@@ -8,6 +8,15 @@ REQUIREMENTS FOR INSTALL
 
 Assimulo must be installed first via conda or mamba for correct installation of pyrcel. For example (conda install -c conda-forge assimulo) then pip install -e . should work. You may need to install conda if you haven't already.
 
+If anyone from class is using this, you should be able to install assimulo into the atoc-2025-lite environment:
+
+conda activate atoc-2025-lite
+conda install -c conda-forge assimulo
+
+Then you can just use this environment in a jupyter notebook when using cloud_parcel.
+
+OTHER REQUIREMENTS
+
 Python version must be >= 3.8. 
 
 pyrcel, joblib also required
