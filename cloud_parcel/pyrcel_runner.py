@@ -305,3 +305,29 @@ class Cloud_Parcel:
 
         plt.tight_layout()
         plt.show()
+
+if __name__ == "__main__":
+    ammonium_sulfate = pm.AerosolSpecies('Ammonium Sulfate',
+                                pm.Lognorm(mu=0.015, sigma=1.6, N=850.),
+                                kappa=0.8, bins=200)
+    sea_salt = pm.AerosolSpecies('sea salt',
+                                pm.Lognorm(mu=0.85, sigma=1.2, N=10.),
+                                kappa=1.2, bins=40)
+
+    cloud_test = Cloud_Parcel(T0=275, P0=77000, S0=-0.02, H=500, V=1, aerosols=[ammonium_sulfate, sea_salt], max_cloud_thickness=100)
+    cloud_test.run_pyrcel()
+    print("Model run completed\n"+"="*100)
+
+    cloud_test.add_cloud_microphysics()
+    print("Microphysics computed")
+    print(f"Sample output: integrated optical depth is {cloud_test.total_tau}\n"+"="*100)
+
+    cloud_test.compute_optical_properties(N=1000, with_absorbance=True)
+    print("Monte Carlo model run completed")
+    print(f"Transmittance: {cloud_test.transmittance}")
+    print(f"Reflectance: {cloud_test.reflectance}")
+    print(f"Absorbance: {cloud_test.absorbance}")
+
+    assert cloud_test.total_tau > 0, "Optical depth should be positive"
+    assert abs(cloud_test.transmittance + cloud_test.reflectance + cloud_test.absorbance - 1.0) < 1e-5, "T + R + A should equal 1"
+    print("\nAll checks passed.")
